@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProjectShauryaTech.Models.Product>
+
+@{
+    ViewData["Title"] = "ViewCart";
+}
+
+<h1>ViewCart</h1>
+
+<p>
+    <a asp-action="Products">Continue Shoping</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pname)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Cid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uid)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pname)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Cid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uid)
+            </td>*@
+            <td>
+                @Html.ActionLink("Remove", "RemoveFromCart", new { cid = item.Cid }) |
+                @Html.ActionLink("Order", "PlaceOrder", new { id = item.Pid }) |
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
